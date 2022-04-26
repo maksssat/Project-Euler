@@ -24,8 +24,7 @@ function getSum1() {
   
   function getSum2() {
     let multiplesSum = 0;
-    let arr = [];
-    //   debugger;
+  
     for (let i = 3; i < 1000; i++) {
       if (
         String(i)
@@ -35,12 +34,10 @@ function getSum1() {
         String(i).split("").at(-1) == 0
       ) {
         multiplesSum += i;
-        arr.push(i);
-      }
+        }
     }
   
-    //   debugger;
-  
+     
     return multiplesSum;
   }
   
