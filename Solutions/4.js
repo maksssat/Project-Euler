@@ -6,13 +6,15 @@ function getLargestPalidrome() {
   let answer = 0;
   let start = Date.now();
 
+  //в цикле умножаем трехзначные числа начиная с самых больших (999) друг на друга
   mainLoop: for (let i = 999; i >= 100; i--) {
     for (let j = i; j >= 100; j--) {
       const product = i * j;
-      if (product < answer) continue mainLoop;
+      if (product < answer) continue mainLoop; // если произведение множителей меньше текущего ответа продолжаем внешний цикл
       if (product.toString() === product.toString().split("").reverse().join("") && product > answer) {
-        answer = product;
-        continue mainLoop;
+        // если произведение является палиндромом и больше текущего значения в answer
+        answer = product; //обновляем переменную с ответом
+        continue mainLoop; //продолжаем внешний цикл
       }
     }
   }

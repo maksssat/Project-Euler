@@ -5,18 +5,17 @@
 //By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
 function getEvenFibSum() {
-    let fibPrev = 1;
-    let fibCurr = 2;
-    let fibEvenSum = 0;
-  
-    while (fibCurr < 4e6) {
-      if (fibCurr % 2 === 0) fibEvenSum += fibCurr;
-      let fibNext = fibPrev + fibCurr;
-      (fibPrev = fibCurr), (fibCurr = fibNext);
-    }
-  
-    return fibEvenSum;
+  let fibPrev = 1;
+  let fibCurr = 2;
+  let fibEvenSum = 0;
+
+  while (fibCurr < 4e6) {
+    if (fibCurr % 2 === 0) fibEvenSum += fibCurr; //если число Фибоначчи четное то прибавляем его к fibEvenSum
+    let fibNext = fibPrev + fibCurr;
+    (fibPrev = fibCurr), (fibCurr = fibNext); // получаем слудуюощие числа Фибоначчи
   }
-  
-  console.log(getEvenFibSum());
-  
+
+  return fibEvenSum;
+}
+
+console.log(getEvenFibSum());
