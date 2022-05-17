@@ -13,7 +13,7 @@ function getLargestPrimeFactor(int) {
     }
 
     function isPrime(num) {
-      for (let i = 2; i < num; i++) {
+      for (let i = 3; i < num; i += 2) {
         if (num % i === 0) return false;
       }
       return true;
@@ -23,10 +23,12 @@ function getLargestPrimeFactor(int) {
   let generator = primeGenerator(); // получаем генератор
   let currPrime = generator.next().value; // получаем значение текущего простого числа из генератора
 
-  while (currIntValue > 1) { // цикл делит переданное в функцию число на простые числа начиная с двух
-    if (currIntValue % currPrime === 0) { // если число делится без остатка, 
+  while (currIntValue > 1) {
+    // цикл делит переданное в функцию число на простые числа начиная с двух
+    if (currIntValue % currPrime === 0) {
+      // если число делится без остатка,
       largestPrimeFactor = currPrime; // обновляем значение largestPrimeFactor
-      currIntValue /= currPrime;  //делим число на это простое число
+      currIntValue /= currPrime; //делим число на это простое число
     } else {
       currPrime = generator.next().value; // иначе получаем следующее простое число из генератора
     }
