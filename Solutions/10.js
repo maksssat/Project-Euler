@@ -7,12 +7,18 @@ function getSumOfPrimes(n) {
 
   const primesArr = [2];
 
-  outerLoop: for (let i = 3; i <= n; i += 2) {
-    for (let j = 0; j < primesArr.length; j++) {
-      if (i % primesArr[j] === 0) continue outerLoop;
+  for (let i = 3; i <= n; i += 2) {
+    if (isPrime(i)) {
+      sumOfPrimes += i;
+      primesArr.push(i);
     }
-    sumOfPrimes += i;
-    primesArr.push(i);
+  }
+
+  function isPrime(n) {
+    for (let j = 0; j < primesArr.length; j++) {
+      if (n % primesArr[j] === 0) return false;
+    }
+    return true;
   }
 
   return sumOfPrimes;

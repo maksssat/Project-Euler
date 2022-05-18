@@ -7,11 +7,15 @@ function getNthPrime(n) {
   let start = Date.now();
   const primesArr = [2];
 
-  outerLoop: for (let i = 3; primesArr.length < n; i++) {
+  for (let i = 3; primesArr.length < n; i += 2) {
+    if (isPrime(i)) primesArr.push(i);
+  }
+
+  function isPrime(n) {
     for (let j = 0; j < primesArr.length; j++) {
-      if (i % primesArr[j] === 0) continue outerLoop;
+      if (n % primesArr[j] === 0) return false;
     }
-    primesArr.push(i);
+    return true;
   }
 
   let end = Date.now();

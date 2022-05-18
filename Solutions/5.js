@@ -56,13 +56,20 @@ function getPrimeFactors(int) {
 
   //функция возвращает генератор, при вызове метода next генератора он возвращает следующее простое число
   function* primeGenerator() {
-    for (let i = 2; ; i++) {
-      if (isPrime(i)) yield i;
+    const primesArr = [2];
+
+    yield 2;
+
+    for (let i = 3; ; i += 2) {
+      if (isPrime(i)) {
+        primesArr.push(i);
+        yield i;
+      }
     }
 
-    function isPrime(num) {
-      for (let i = 3; i < num; i++) {
-        if (num % i === 0) return false;
+    function isPrime(n) {
+      for (let j = 0; j < primesArr.length; j++) {
+        if (n % primesArr[j] === 0) return false;
       }
       return true;
     }
